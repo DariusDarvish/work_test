@@ -1,0 +1,57 @@
+<div class="navbar">
+  <a href="#home"><p><a style="color:#b30404;">AMAZON </a> <a style="color:#ff7b00;"> METRIX</a></p></a>
+  <a href="#news"></a>
+  <a class="
+      " data-widget="control-sidebar"  data-slide="true" href="#" style="left:80px">
+          <div class="dropdown dropleft">
+              <i id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+                class="fas fa-cog"></i> 
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                   
+                    <a class="dropdown-item" (click)="logout()"> logout </a>
+                   
+                  </div>
+          </div>
+      </a> 
+</div>
+
+
+
+<div class="flex-container">
+<div class="flex-item">
+   
+    <div class="header-center">
+      <p><a style="color:#b30404;">AMAZON </a> <a style="color:#ff7b00;"> METRIX</a></p>
+    </div>
+ 
+
+ <form [formGroup]="companykeyForm" (ngSubmit)="companykeyinfo()">
+
+
+
+  <label class="badge" style="align-items: left;">MWS authtoken</label>
+  <input class="input1" matInput type="text" id="company" placeholder="" autocomplete="off" formControlName="mws_authtoken" required>
+  <div class="text-danger" *ngIf ="f.mws_authtoken.invalid && (f.mws_authtoken.dirty || f.mws_authtoken.touched)" style="font-size: small;">MWS_authtoken is invalid</div>
+
+  <label class="badge" style="align-items: left;">Access key</label>
+  <input class="input1" matInput type="text" id="company" placeholder="" autocomplete="off" formControlName="access_key" required>
+
+  <label class="badge" style="align-items: left;">Merchant id</label>
+  <input class="input1" matInput type="text" id="company" placeholder="" autocomplete="off" formControlName="merchant_id" required>
+  <div class="text-danger" *ngIf ="f.merchant_id.invalid && (f.merchant_id.dirty || f.merchant_id.touched)" style="font-size: small;">Merchant_ID is invalid</div>
+
+  <label class="badge" style="align-items: left;">Seceret Key</label>
+  <input class="input1" matInput type="text" id="company" placeholder="" autocomplete="off" formControlName="secret_key" required>
+
+  <label class="badge" style="align-items: left;">Marketplace id</label>
+  <input class="input1" matInput type="text" id="company" placeholder="" autocomplete="off" formControlName="marketplace_id" required>
+
+  <label class="badge" style="align-items: left;">Advertising token</label>
+  <input class="input1" matInput type="text" id="company" placeholder="" autocomplete="off" formControlName="advertising_token" required>
+  <div class="text-danger" *ngIf ="f.advertising_token.invalid && (f.advertising_token.dirty || f.advertising_token.touched)" style="font-size: small;">Advertising token is invalid</div>
+ 
+  <div class=row></div>
+  <button class="btn btn-custom" mat-raised-button color="primary" type="submit"  button type="submit" [disabled]="!companykeyForm.valid" >Signup</button>
+</form>
+</div>
+</div>

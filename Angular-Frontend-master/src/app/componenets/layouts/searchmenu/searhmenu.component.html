@@ -1,0 +1,161 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<body style="background-color:white;">
+
+  <div *ngIf="Search_Toggle==false">
+    <div class="container-fluid">
+      <div class="card" [ngStyle]="{'height':Advanced==false ? '52px':'100px'}">
+
+        <form [formGroup]='dateForm' (ngSubmit)='onSubmit()'>
+
+          <div class="row">
+
+            <button type="submit" class="btn btn-custom3 btn-space" (click)="Toggle($event, 'Toggle')">-</button>
+
+            <ng-multiselect-dropdown select multiple formControlName="accounts" class="first-row-box"
+              [settings]="dropdownSettingscompaines" [placeholder]="'Account'" [data]="companieslist"
+              [(ngModel)]="selectedItemsCompanies" (onSelect)="onItemSelect($event)"
+              (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+
+            <!-- make this a list and do it just like sidenav menu! -->
+
+
+            <select class="first-row-box-date" (click)="sendDate($event)">
+
+              <option value="Current month">Current month</option>
+              <option value="Last month">Last month</option>
+              <option value="This year">This year</option>
+              <option value="Last year">Last year</option>
+              <option value="First quarter">First quarter</option>
+              <option value="Second quarter">Second quarter</option>
+              <option value="Third quarter">Third quarter</option>
+              <option value="Fourth quarter">Fourth quarter</option>
+
+            </select>
+
+            <label>
+              <input type="date" id="first_date" formControlName="first_date" class="form-control"
+                [(ngModel)]="first_date" name='first_date'>
+            </label>
+
+            <label>
+              <input type="date" id="last_date" formControlName="last_date" class="form-control" [(ngModel)]="last_date"
+                name='last_date'>
+            </label>
+
+
+            <button type="submit" class="btn btn-custom2 btn-space">Search</button>
+
+            <div *ngIf="Advanced==true">
+              <button type="button" class="nav-icon fas fa-caret-down btn btn-custom4 btn-space"
+                (click)="Toggle($event, 'Advanced_false')"></button>
+            </div>
+            <div *ngIf="Advanced==false">
+              <button type="button" class="nav-icon fas fa-caret-right btn btn-custom4 btn-space"
+                (click)="Toggle($event, 'Advanced_true')"></button>
+            </div>
+          </div>
+
+          <div *ngIf="Advanced==true">
+
+            <div class="row">
+              <!-- make this a list and do it just like sidenav menu! -->
+              <select class="second-row-box-first" data-title="Single Select" data-menu-style="dropdown-blue"
+                [(ngModel)]='current_type' (ngModelChange)="onChange($event)" formControlName="search_type"
+                name='drop_down_list'>
+                <option *ngFor="let item of drop_down_list" [ngValue]="item">{{item}}</option>
+              </select>
+
+
+              <div *ngIf="current_type=='ASIN'">
+                <ng-multiselect-dropdown select multiple formControlName="search_type_value" class="second-row-box"
+                  [settings]="dropdownSettingasin_type" [placeholder]="'ASIN'" [data]="asinlist"
+                  [(ngModel)]="selectedItemsAsin" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown>
+              </div>
+
+              <div *ngIf="current_type=='Parent ASIN'">
+                <ng-multiselect-dropdown select multiple formControlName="search_type_value" class="second-row-box"
+                  [settings]="dropdownSettingparentasin_type" [placeholder]="'Parent ASIN'" [data]="parent_asinlist"
+                  [(ngModel)]="selectedItemsParentAsin" (onSelect)="onItemSelect($event)"
+                  (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown>
+              </div>
+
+              <div *ngIf="current_type=='SKU'">
+                <ng-multiselect-dropdown select multiple formControlName="search_type_value" class="second-row-box"
+                  [settings]="dropdownSettingssku_type" [placeholder]="'SKU'" [data]="skulist"
+                  [(ngModel)]="selectedItemsSku" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown>
+              </div>
+
+              <div *ngIf="current_type=='Order ID'">
+                <ng-multiselect-dropdown select multiple formControlName="search_type_value" class="second-row-box"
+                  [settings]="dropdownSettingssku_type" [placeholder]="'SKU'" [data]="SKU_DICT"
+                  [(ngModel)]="selectedItemsSku" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown>
+              </div>
+
+
+
+
+              <div>
+                <ng-multiselect-dropdown select multiple formControlName="brands" class="second-row-box"
+                  [settings]="dropdownSettingsbrands" [placeholder]="'Brands'" [data]="brandslist"
+                  [(ngModel)]="selectedItemsBrands" (onSelect)="onItemSelect($event)"
+                  (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown>
+              </div>
+
+              <ng-multiselect-dropdown select multiple formControlName="departments" class="second-row-box"
+                [settings]="dropdownSettingsdepartments" [placeholder]="'Department'" [data]="departmentslist"
+                [(ngModel)]="selectedItemsDepartments" (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)">
+              </ng-multiselect-dropdown>
+
+              <div>
+                <ng-multiselect-dropdown select multiple formControlName="categories" class="second-row-box"
+                  [settings]="dropdownSettingscategories" [placeholder]="'Category'" [data]="categorylist"
+                  [(ngModel)]="selectedItemsCategories" (onSelect)="onItemSelect($event)"
+                  (onSelectAll)="onSelectAll($event)">
+                </ng-multiselect-dropdown>
+              </div>
+
+              <ng-multiselect-dropdown select multiple formControlName="sub_categories" class="second-row-box"
+                [settings]="dropdownSettingssub_categories" [placeholder]="'Sub Category'" [data]="sub_categorylist"
+                [(ngModel)]="selectedItemsSub_Categories" (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)">
+              </ng-multiselect-dropdown>
+
+              <ng-multiselect-dropdown select multiple formControlName="product_group" class="second-row-box"
+                [settings]="dropdownSettingsproduct_group" [placeholder]="'Product Group'" [data]="product_grouplist"
+                [(ngModel)]="selectedItemsProduct_Group" (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)">
+              </ng-multiselect-dropdown>
+
+              <ng-multiselect-dropdown select multiple formControlName="product_type" class="second-row-box"
+                [settings]="dropdownSettingsproduct_type" [placeholder]="'Product Type'" [data]="product_typelist"
+                [(ngModel)]="selectedItemsProduct_Type" (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)">
+              </ng-multiselect-dropdown>
+            </div>
+          </div>
+
+        </form>
+
+
+
+
+      </div>
+
+
+
+    </div>
+  </div>
+
+</body>
+
+</html>

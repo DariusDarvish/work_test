@@ -1,0 +1,75 @@
+
+
+<div class="flex-container">
+  <div class="flex-item">
+ 
+    <div class="header-center">
+      <p><a style="color:#b30404;">AMAZON </a> <a style="color:#ff7b00;"> METRIX</a></p>
+    </div>
+ 
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+      
+      <label class="badge" style="align-items: left;">Username</label>
+      <input class="input1" matInput type="text" id="username" placeholder="" autocomplete="off" formControlName="username" required>
+     
+    
+      
+      <label class="badge" style="align-items: left;">Password</label>
+      <input class="input1" matInput type="password" id="password" placeholder="" formControlName="password" required>
+      
+    
+      <button class="btn btn-custom" mat-raised-button color="primary" type="submit" style='top:70px;'>Sign In</button>
+
+    
+
+    </form>
+    
+     <a style="font-size: 12px; margin-bottom: 100px;"a routerLink="/signup" routerLinkActive="active" >Sign up</a>//
+     <a style="font-size: 12px;" routerLink="/emailinput" routerLinkActive="active">Forgot Password</a>
+    
+</div>
+
+
+
+</div>
+
+   
+    
+    
+      <!-- <div class = "row" > -->
+      
+      <!-- </div> -->
+
+      <!-- <div class="header center">Log In</div> -->
+
+      <!-- <mat-form-field> -->
+        <!-- <div class = "row">
+        <label class="badge badge-secondary" >Username</label>
+        </div>
+        <div class = "row">
+        <input  matInput type="text" id="username" placeholder="Username" autocomplete="off" formControlName="username" required>
+        </div>
+        <div class = "row">
+          <label class="badge badge-secondary" >Password</label>
+        </div> -->
+      <!-- </mat-form-field> -->
+    
+      <!-- <mat-form-field> -->
+   
+        <!-- <input matInput type="password" id="password" placeholder="Password" formControlName="password" required> -->
+      <!-- </mat-form-field> -->
+    
+      <!-- <div class="actions"> -->
+        <!-- <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">LOG IN</button> -->
+      <!-- </div> -->
+    
+    <!-- </form> -->
+<!-- </div>
+
+    </div> -->
+
+
+
+

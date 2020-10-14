@@ -1,0 +1,64 @@
+<html style="background-color:white;">
+<style>
+
+</style>
+
+<body style="background-color:white;">
+
+  <div class='header'>
+    <app-header></app-header>
+  </div>
+
+
+  <nav class="navbar">
+    <app-sidenav></app-sidenav>
+  </nav>
+
+
+
+
+  <div class="content-wrapper" style="background-color:white;">
+
+
+
+    <section class="content" style="background-color:white">
+      <!-- <hr style="margin-top:-8px"> -->
+      <div class="container-fluid">
+        <button type="button" class="btn btn-primary" style='margin-bottom: 20px;' (click)="addWidget($event)">ADD
+          WIDGET</button>
+
+      </div>
+    </section>
+    <!-- ng if here to load new gird -->
+
+    <div class="content-wrapper2">
+      <ngx-widget-grid [rows]="4" [columns]="10" [highlightNextPosition]="false" [showGrid]="true"
+        style="height:80%;width:83%" (gridFull)="onGridFull($event)">
+        <!-- for loop here -->
+        <ngx-widget [movable]="true" [resizable]="true" *ngFor="let widget of greetingWidgets"
+          [(position)]="widget.position">
+
+          <div style="height:100%;width:100%; display:flex;">
+
+            <button title="Remove Widget" class="demo-btn demo-btn-remove-widget" (click)="removeWidget(widget)"
+              style="z-index:21;">&#x2715;</button>
+
+            <div style="height:100%;width:100%; padding:10px; background-color: rgb(247,247, 247);">
+              {{widget.text}}
+
+            </div>
+          </div>
+        </ngx-widget>
+
+
+      </ngx-widget-grid>
+
+    </div>
+
+
+
+  </div>
+
+</body>
+
+</html>

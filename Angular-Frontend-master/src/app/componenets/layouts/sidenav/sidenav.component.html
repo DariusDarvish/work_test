@@ -1,0 +1,286 @@
+<!-- Main Sidebar Container -->
+
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/jquery-1.12.4.min.js">\x3C/script>')</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<body>
+
+  <aside class="main-sidebar elevation-4" style="overflow-y: auto!important; overflow-x: hidden!important;">
+
+
+    <!-- Brand Logo -->
+    <a routerLink='/login' class="brand-link">
+
+      <span class="brand-text">
+        <p><a style="color:#b30404;">AMAZON </a> <a style="color:#ff7b00;"> METRIX</a></p>
+
+        <div class="company-switch">
+          <i class="nav-icon far fa-address-card" name="nav-icon-top" style="margin-left: -10px;"></i>
+          <select name='companies' [(ngModel)]='companies[0]' (ngModelChange)="onSubmit($event)">
+
+            <option *ngFor="let company of companies" [ngValue]="company">{{company}}</option>
+          </select>
+        </div>
+      </span>
+    </a>
+
+    <!-- <div class="company-switch" >
+        <i class="nav-icon far fa-address-card"  name="nav-icon-top" style="margin-left: 18px;"></i>
+        <select name='companies'  [(ngModel)]='companies[0]' (ngModelChange)="onSubmit($event)">
+          
+          <option *ngFor="let company of companies" [ngValue]="company">{{company}}</option>
+      </select>
+    </div> -->
+
+
+
+
+    <!-- Sidebar -->
+    <!-- <li class="nav-item has-treeview">
+      <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-tachometer-alt"></i>
+        <p>
+          Dashboard
+          <i class="right fas fa-angle-left"></i>
+        </p>
+      </a>
+      <ul class="nav nav-treeview">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link active">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Dashboard v1</p>
+          </a>
+        </li>
+      </ul>
+    </li> -->
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+
+
+
+
+        <li class="nav-item">
+          <a a routerLink="/dashboard" routerLinkActive="active" class="nav-link" (click)='show()'>
+            <i class="nav-icon fas fa-chart-pie"></i>
+            <p style="margin-left:15px">
+              Dashboard
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/styledetails" routerLinkActive="active" class="nav-link" (click)='show()'>
+            <i class="nav-icon fas fa-edit"></i>
+            <p style="margin-left:15px">
+              Styles Details
+            </p>
+          </a>
+        </li>
+        <li class="nav-item has-treeview">
+          <a class="nav-link">
+            <i class="nav-icon fas fa-balance-scale-left"></i>
+            <p style="margin-left:15px">
+              Accounting
+              <i class="fas fa-angle-left right" style=margin-top:5px;></i>
+
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a routerLinkActive="active" class="nav-link" (click)='create_report("profit_loss")'>
+                <i class="nav-icon far"> </i>
+                <p style='color:#b3b3b3'>Profit & Loss</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)='create_report("balancesheets")'>
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Balance Sheet</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink='/statmentofcashflow' routerLinkActive="active" class="nav-link" (click)='show()'>
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Cash Flow</p>
+              </a>
+            </li>
+
+
+          </ul>
+        </li>
+
+        <li class="nav-item has-treeview">
+          <a class="nav-link">
+            <i class="nav-icon fas fa-chart-line"></i>
+            <p style="margin-left:15px">
+              Advertising
+              <i class="fas fa-angle-left right" style=margin-top:5px;></i>
+
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a routerLink="/campaignreport" routerLinkActive="active" class="nav-link">
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Campaigns</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/adgroupreport" routerLinkActive="active" class="nav-link">
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>AdGroups</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/productreport" routerLinkActive="active" class="nav-link">
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Products</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-dolly"></i>
+            <p style="margin-left:15px">
+              Inventory
+              <i class="fas fa-angle-left right" style=margin-top:5px;></i>
+
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a routerLink="/availableInventoryComponent" routerLinkActive="active" class="nav-link">
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Available Inventory</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/agedinventory" routerLinkActive="active" class="nav-link">
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Aged Inventory</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/inventorycosting" routerLinkActive="active" class="nav-link">
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Inventory Costing</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/productbalance ledger" routerLinkActive="active" class="nav-link">
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Inventory Ledger</p>
+              </a>
+            </li>
+
+          </ul>
+        </li>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-chart-bar"></i>
+            <p style="margin-left:15px">
+              Performance
+              <i class="fas fa-angle-left right" style=margin-top:5px;></i>
+
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a routerLink="/allorders" routerLinkActive="active" class="nav-link">
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Orders</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/performancereport" routerLinkActive="active" class="nav-link">
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Performance</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/productperformance" routerLinkActive="active" class="nav-link">
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Returns</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/productprofitability" routerLinkActive="active" class="nav-link">
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Profitability</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-dollar-sign"></i>
+            <p style="margin-left:15px">
+              Payments
+              <i class="fas fa-angle-left right" style=margin-top:5px;></i>
+
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a routerLink="/paymentreports" routerLinkActive="active" class="nav-link">
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Payment Report</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a (click)='create_report("settlement_report")' class="nav-link">
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Settlement Report</p>
+              </a>
+            </li>
+
+          </ul>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-box-open"></i>
+            <p style="margin-left:15px">
+              Replenishment
+              <i class="fas fa-angle-left right" style=margin-top:5px;></i>
+
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+
+            <li class="nav-item">
+              <a routerLink="/standardforcast" routerLinkActive="active" class="nav-link">
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Regular Forecast</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/seasonalforcast" routerLinkActive="active" class="nav-link">
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Seasonal Forcast</p>
+              </a>
+            </li>
+
+
+            <li class="nav-item">
+              <a routerLink="/factoryforcast" routerLinkActive="active" class="nav-link">
+                <i class="nav-icon far"></i>
+                <p style='color:#b3b3b3'>Factory Planning</p>
+              </a>
+            </li>
+          </ul>
+
+
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+
+    <!-- /.sidebar -->
+  </aside>
+</body>

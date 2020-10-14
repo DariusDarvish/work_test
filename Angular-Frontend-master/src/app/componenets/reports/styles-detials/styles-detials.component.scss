@@ -1,0 +1,146 @@
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+// @import "~ag-grid-community/src/styles/ag-grid.scss";
+@import "~ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin";
+
+
+
+$my-app-primary: mat-palette($mat-blue-grey);
+$my-app-accent:  mat-palette($mat-pink, 500, 900, A100);
+$my-app-warn:    mat-palette($mat-deep-orange);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+@include angular-material-theme($my-app-theme);
+
+.ag-theme-alpine {
+    /* use theme parameters where possible */
+    --ag-icon-size:2px;
+}
+
+/* or write CSS selectors to make customisations beyond what the parameters support */
+.ag-theme-alpine .ag-header-cell-label {
+    
+    font-size:12px;
+       
+}
+
+
+.navbar{
+    zoom:90%;
+}
+    
+
+.plus-button {
+	border: 2px solid lightgrey;
+	background-color: #fff;
+	font-size: 16px;
+	height: 2.5em;
+	width: 2.5em;
+	border-radius: 999px;
+    position: relative;
+    
+    
+	
+	&:after,
+	&:before {
+		content: "";
+		display: block;
+		background-color: grey;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	
+	&:before {
+		height: 1em;
+		width: 0.2em;
+	}
+
+	&:after {
+		height: 0.2em;
+		width: 1em;
+	}
+}
+
+.plus-button:focus
+{
+    outline:none;
+}
+
+.plus-button--small {
+	font-size: 12px;
+}
+
+.minus-button {
+	border: 2px solid lightgrey;
+	background-color: #fff;
+	font-size: 1px;
+	height: 2.5em;
+	width: 2.5em;
+	border-radius: 999px;
+    position: relative;
+    margin: 4px;
+    
+	
+	&:after,
+	&:before {
+		content: "";
+		display: block;
+		background-color: grey;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,);
+	}
+	
+	&:before {
+		height: 1em;
+		width: 0.0em;
+	}
+
+	&:after {
+		height: 0.2em;
+		width: 1em;
+	}
+}
+
+.minus-button--small {
+	font-size: 12px;
+}
+
+
+.minus-button:focus
+{
+    outline:none;
+}
+
+
+.area {
+      width: 77%;
+      padding: 15px;
+      margin: 15px;
+      border: 1px solid #333;
+      background: rgba(0,0,0,0.7);
+}
+
+#dropZone {
+      border: 2px dashed #bbb;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      padding: 50px;
+      text-align: center;
+      font: 21pt bold arial;
+      color: #bbb;
+}
+
+.drop-file-over{
+    background: #333;
+}
+
+
+
+
+
+

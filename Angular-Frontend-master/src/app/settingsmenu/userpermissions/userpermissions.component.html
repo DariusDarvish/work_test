@@ -1,0 +1,195 @@
+<app-settingsheader></app-settingsheader>
+
+
+<div class="container p-0">
+    
+
+    <div class="row">
+        <div class="col-md-5 col-xl-4">
+                
+
+                <app-sidenav4settings></app-sidenav4settings>
+            
+        </div>
+
+        <div class="col-md-7 col-xl-8">
+           
+                
+                
+                    <div class="card">
+                        <div class="card-header">
+                            
+                            <h5 class="card-title mb-0">User Permissions</h5>
+                            <button (click) = toggleDisplay() style="position: absolute; right:89px;">Add user</button>
+                        </div>
+                        <div class="card-body">
+                            <div *ngIf="!isShow">
+
+                            <table>
+                                <tr>
+                                <th>Users</th>
+                                <th>User's Settings</th>
+                                <th>User's Privileges</th>
+                                <th>Delete User</th>
+                                </tr>
+                                
+                                <tr *ngFor="let user of users" style="list-style-type: none;">
+                                    
+                                    
+                                    
+                                        
+                                        
+                                                <td>{{ user.username }}</td>
+                                                <td><button (click)="onSelect(user)">User Settings</button></td>
+                                                <td><button (click)="get_type(user.username,content)">User privileges</button></td>
+                                                <td><button (click)="delete_user(user.username,content1)">Delete User</button></td>
+
+
+                                                <ng-template #content1 let-c="close" let-d="dismiss">
+                                                    <form form [formGroup]="deleteuserform" (ngSubmit)="delete_user_submit()">
+                                                    <div class="modal-header">
+                                                      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+                                                      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                                        <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                        <div *ngIf="(usertype==='super_admin')||(username===user.username); else other_content">
+                                                            Cannot delete this user
+                                                        </div>
+                                                        <ng-template #other_content>
+                                                            
+                                                            
+                                                          <br>
+                                                          <label>Enter password to delete user : </label>
+                                                            <input class="input1" matInput type="password" formControlName="password" required>
+                                                        
+                                                        </ng-template>
+                                                    </div>
+                                                    <div *ngIf="usertype==='super_admin'; else other_content1">
+                                                    </div>
+                                                    <ng-template #other_content1>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-outline-dark"(click)='delete_user_submit()' [disabled]="!deleteuserform.valid"  (click)="d('Cross click')">Submit</button>
+                                                    </div>
+                                                    </ng-template>
+                                                </form>
+                                                  </ng-template>
+                    
+                                                <!-- Do Not change after here -->
+
+                                    
+
+                                                <ng-template #content let-c="close" let-d="dismiss">
+                                                    <form form [formGroup]="changeusertypeform" (ngSubmit)="changeType(user)">
+                                                    <div class="modal-header">
+                                                      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+                                                      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                                        <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                      
+                                                        <p>{{user.username}} is a: {{usertype}}</p>
+                                                        <p></p>
+                                                        <div *ngIf="usertype==='super_admin'; else other_content">
+                                                        </div>
+                                                        <ng-template #other_content>
+                                                            
+                                                            <select id="user_type" name="user_type" [(ngModel)]='usertype' formControlName="user_type" style="top: -150px;" required>
+                                                            <option value="admin">admin</option>
+                                                            <option value="user">user</option>
+                                                          </select>
+                                                          <br>
+                                                          <label>Enter password to confrim changes : </label>
+                                                            <input class="input1" matInput type="password" formControlName="password" required>
+                                                        
+                                                        </ng-template>
+                                                    </div>
+                                                    <div *ngIf="usertype==='super_admin'; else other_content1">
+                                                    </div>
+                                                    <ng-template #other_content1>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-outline-dark"(click)='changeType(user)' [disabled]="!changeusertypeform.valid"  (click)="d('Cross click')">Submit</button>
+                                                    </div>
+                                                    </ng-template>
+                                                </form>
+                                                  </ng-template>
+                    
+                                                <!-- Do Not change after here -->
+                                    
+                                </tr>
+                            
+                            </table>
+                           
+                            </div> 
+
+                            
+
+                            <div *ngIf="isShow">
+
+                                <form form [formGroup]="inviteUserForm" (ngSubmit)="changeData()">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                           
+                                
+    
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <!-- Validator on this field to force them to put in the old password  we already have a pre made endpoint  -->
+                                                        
+                                                         <label for="inputUsername">Email to invite: </label>
+                                                        <input class="input1" matInput type="text" id="email"  autocomplete="off" formControlName="email" required>
+                                                       
+                                                        <div id="admin_field" style="top: -150px;">
+                                                        <label class="badge" style="align-items: left;top: -150px;">User Type:</label>
+                                                        <select id="user_type" name="user_type" formControlName="user_type" style="top: -150px;">
+                                                            <option value="admin">admin</option>
+                                                            <option value="user">user</option>
+                                                          </select>
+                                                        </div>
+                                                        
+                                                       
+
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col" style="right:-200px;">
+                                                    
+                                                </div>
+                                              </div>
+    
+    
+                                            
+                                            
+                                        
+                                            
+                                            
+                                        </div>
+                                        <div class="col-md-4">
+                                            
+                                        </div>
+                                    </div>
+
+
+
+                                    <button type="button" class="btn btn-outline-dark" (click)='changeData()' [disabled]="!inviteUserForm.valid">Submit</button>
+                                </form>
+
+
+
+                            </div>
+                           
+                    </div>
+
+                   
+
+                
+        
+            
+        </div>
+    </div>
+
+</div>

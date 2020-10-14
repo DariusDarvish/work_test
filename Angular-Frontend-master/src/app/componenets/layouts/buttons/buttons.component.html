@@ -1,0 +1,177 @@
+<div class="row">
+    <div class="col-12">
+        <div class="btn-group">
+            <div *ngIf="Search_Toggle==true">
+                <button type="submit" class="btn btn-custom3 btn-space" (click)='show()' style="width: 40px;">+</button>
+            </div>
+        </div>
+        <div class="btn-group" style="top:20px;">
+            <button type="button" name=lol class="btn btn-custom dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                {{Drop_Down_1_Value_1}}
+            </button>
+            <div class="dropdown-menu">
+                <ng-container *ngFor="let item of Drop_Down_1">
+                    <a class="dropdown-item" name="group1" (click)=type_menu(group1,item)>{{item}}</a>
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="btn-group" style="top:20px;">
+            <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                {{Drop_Down_2_Value_1}}
+            </button>
+            <div class="dropdown-menu">
+                <ng-container *ngFor="let item of Second_Drop_Down_Fields_1">
+                    <a class="dropdown-item" (click)=select_menu(group1,item)>{{item}}</a>
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="btn-group" style="top:20px;">
+            <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                {{Orientation_1}}
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" (click)=orientation(group1,portrait)>Portrait</a>
+                <a class="dropdown-item" (click)=orientation(group1,landscape)>Landscape</a>
+            </div>
+
+
+
+            <!-- here fpr part two -->
+        </div>
+        <button *ngIf="Second_Group==false" id="test" type="button" class="btn btn-custom-1 btn-space"
+            (click)="add_subtract_new_section(group2,set_true)" style="width: 40px!important;">+</button>
+        <button *ngIf="Second_Group==true" type="button" class="btn btn-custom-1 btn-space"
+            (click)="add_subtract_new_section(group2,set_false)" style="width: 40px!important;">-</button>
+
+        <div class="btn-group" style="top:0px;">
+            <div *ngIf="Second_Group==true">
+
+                <div class="btn-group" style="top:20px;">
+                    <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        {{Drop_Down_1_Value_2}}
+                    </button>
+                    <div class="dropdown-menu">
+                        <ng-container *ngFor="let item of Drop_Down_1">
+                            <a class="dropdown-item" (click)=type_menu(group2,item)>{{item}}</a>
+                        </ng-container>
+                    </div>
+                </div>
+
+                <div class="btn-group" style="top:20px;">
+                    <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        {{Drop_Down_2_Value_2}}
+                    </button>
+                    <div class="dropdown-menu">
+                        <ng-container *ngFor="let item of Second_Drop_Down_Fields_2">
+                            <a class="dropdown-item" (click)=select_menu(group2,item)>{{item}}</a>
+                        </ng-container>
+                    </div>
+                </div>
+
+                <div class="btn-group" style="top:20px;">
+                    <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        {{Orientation_2}}
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)=orientation(group2,portrait)>Portrait</a>
+                        <a class="dropdown-item" (click)=orientation(group2,landscape)>Landscape</a>
+                    </div>
+                </div>
+
+
+                <button *ngIf="Third_Group==false && screen_width>1599" type="button" id="hello"
+                    class="btn btn-custom-1 btn-space" (click)="add_subtract_new_section(group3,set_true)"
+                    style="width: 40px!important;">+</button>
+                <button *ngIf="Third_Group==true && screen_width>1599" type="button" id="hello"
+                    class="btn btn-custom-1 btn-space" (click)="add_subtract_new_section(group3,set_false)"
+                    style="width: 40px!important;">-</button>
+
+                <div class="btn-group" style="top:-5px;">
+                    <div *ngIf="Third_Group==true">
+
+                        <div class="btn-group" style="top:25px;">
+                            <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                {{Drop_Down_1_Value_3}}
+                            </button>
+                            <div class="dropdown-menu">
+                                <ng-container *ngFor="let item of Drop_Down_1">
+                                    <a class="dropdown-item" (click)=type_menu(group3,item)>{{item}}</a>
+                                </ng-container>
+                            </div>
+                        </div>
+
+                        <div class="btn-group" style="top:25px;">
+                            <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                {{Drop_Down_2_Value_3}}
+                            </button>
+                            <div class="dropdown-menu">
+                                <ng-container *ngFor="let item of Second_Drop_Down_Fields_3">
+                                    <a class="dropdown-item" (click)=select_menu(group3,item)>{{item}}</a>
+                                </ng-container>
+                            </div>
+                        </div>
+
+                        <div class="btn-group" style="top:25px;">
+                            <button type="button" class="btn btn-custom dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                {{Orientation_3}}
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" (click)=orientation(group3,portrait)>Portrait</a>
+                                <a class="dropdown-item" (click)=orientation(group3,landscape)>Landscape</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <button class="plus-button plus-button--small" style="top:0px;" (click)="allInOne(10)"></button>
+
+        <button class='minus-button minus-button--small' style="top:0px;" (click)="allInOne(-10)"></button>
+        <button type="button" *ngIf="on_Style_Details==true" class="btn btn-custom " aria-haspopup="true"
+            aria-expanded="false" (click)='open(content)' style="margin-left: 10px; margin-bottom:10px">
+            Upload
+        </button>
+
+        <button type="button" class="btn btn-custom1 btn-space" (click)="clearall()"
+            style="widows: 80px; margin-right: 3px;">Clear
+            All</button>
+
+    </div>
+
+
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <input type="file" ng2FileSelect [uploader]="uploader" (change)="fileChanged($event)" />
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')"
+                (click)='upload($event.target)'>Submit</button>
+        </div>
+    </ng-template>
+
+</div>

@@ -1,0 +1,216 @@
+<app-settingsheader></app-settingsheader>
+
+
+<div class="container p-0">
+
+
+    <div class="row">
+        <div class="col-md-5 col-xl-4">
+
+
+            <app-sidenav4settings></app-sidenav4settings>
+
+        </div>
+
+        <div class="col-md-7 col-xl-8">
+
+
+
+            <div class="card">
+                <div class="card-header">
+
+                    <h5 class="card-title mb-0">Edit info</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="changedataForm" (ngSubmit)="changeData()">
+                        <div class="row">
+                            <div class="col-md-8">
+
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="inputUsername">Username: </label>
+                                            <input class="input1" matInput type="text" id="username"
+                                                [(ngModel)]="username" autocomplete="off" formControlName="username"
+                                                required>
+                                            <div class="text-danger"
+                                                *ngIf="f.username.invalid && (f.username.dirty || f.username.touched)"
+                                                style="font-size: small;">Username is already taken</div>
+                                        </div>
+                                    </div>
+                                    <div class="col" style="right:-100px;">
+                                        <div class="form-group">
+                                            <label for="inputUsername">Email: </label>
+                                            <div class="row" style="right:50px;"></div>
+                                            <input class="input1-email" matInput type="text" id="email"
+                                                [(ngModel)]="email" autocomplete="off" formControlName="email" required>
+
+                                            <div class="text-danger"
+                                                *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)"
+                                                style="font-size: small;">Please use another email</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="inputUsername">First Name: </label>
+                                            <input class="input1" matInput type="text" id="first_name"
+                                                [(ngModel)]="first_name" formControlName="first_name">
+                                        </div>
+                                    </div>
+                                    <div class="col" style="right:-100px;">
+                                        <div class="form-group">
+                                            <label for="inputUsername">Last Name: </label>
+                                            <input class="input1" matInput type="text" id="first_name"
+                                                [(ngModel)]="last_name" formControlName="last_name">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+                            </div>
+                            <div class="col-md-4">
+
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" [disabled]="!changedataForm.valid">Save
+                            changes</button>
+
+
+                    </form>
+
+
+                    <div class="card-header">
+
+                        <h5 class="card-title mb-0"></h5>
+                    </div>
+                    <br>
+                    <form [formGroup]="changePasswordForm" (ngSubmit)="ChangePassword()">
+                        <div class="row">
+                            <div class="col-md-8">
+
+
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <!-- Validator on this field to force them to put in the old password  we already have a pre made endpoint  -->
+
+                                            <label class="badge" style="align-items: left;">Old Password:</label>
+                                            <input class="input1" matInput type="password" id="old_password"
+                                                autocomplete="off" formControlName="old_password" required>
+
+
+                                            <label class="badge" style="align-items: left;">New Password:</label>
+                                            <input class="input1" matInput type="password" id="new_password1"
+                                                placeholder="" formControlName="new_password1" required>
+                                            <div class="text-danger"
+                                                *ngIf="g.new_password1.invalid && (g.new_password1.dirty || g.new_password1.touched)"
+                                                style="font-size: small;">Password must be 8 Characters long</div>
+
+
+                                            <label class="badge" style="align-items: left;">Re-Type New
+                                                Password:</label>
+                                            <input class="input1" matInput type="password" id="new_password2"
+                                                placeholder=""
+                                                [ngClass]="{'is-invalid':changePasswordForm.get('new_password2').errors}"
+                                                formControlName="new_password2" required>
+                                            <div class="invalid-feedback"
+                                                *ngIf="changePasswordForm.get('new_password2').hasError('passwordMismatch')"
+                                                style="font-size: small;">
+                                                Passwords do not match.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col" style="right:-200px;">
+
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+                            </div>
+                            <div class="col-md-4">
+
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary" [disabled]="!changePasswordForm.valid">Save
+                            changes</button>
+                    </form>
+                    <br>
+
+
+                    <div class="card-header">
+
+                        <h5 class="card-title mb-0"></h5>
+                    </div>
+
+                    <form [formGroup]="changedataForm" (ngSubmit)="changeData()">
+                        <div class="row">
+                            <div class="col-md-8">
+
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <!--Validator on this field to force them to put in the old password  we already have a pre made endpoint  -->
+                                            <label for="inputUsername">Notifaction preferences: </label>
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" value="">Receive marketing
+                                                    materials</label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col" style="right:-200px;">
+
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+                            </div>
+                            <div class="col-md-4">
+
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
+
+
+
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,44 @@
+<div class="card" style="width: 65%; height: 880px; ">
+  <div class="card-header">
+
+  </div>
+
+  <div class="list-group list-group-flush" role="tablist">
+    <div *ngIf="(usertype==='super_admin')||(usertype==='admin')||(usertype==='user')">
+      <a class="list-group-item list-group-item-action " (click)="userinfopage()" routerLink='/usersettings'>
+        Account Management
+      </a>
+    </div>
+
+    <div *ngIf="(usertype==='super_admin')||(usertype==='admin')||(usertype==='user')">
+      <a class="list-group-item list-group-item-action" routerLink='/accountinfo'>
+        Account Info
+      </a>
+    </div>
+
+
+    <div *ngIf="(usertype==='super_admin')||(usertype==='admin')">
+      <a class="list-group-item list-group-item-action" routerLink='/userpermissions'>
+        Permissions
+      </a>
+    </div>
+
+
+    <!-- <a class="list-group-item list-group-item-action"  routerLink='/manageaccount' >
+          Manage account
+        </a>
+
+        <a class="list-group-item list-group-item-action"  routerLink='/billinginformation' >
+          Billing info
+        </a>
+
+        <a class="list-group-item list-group-item-action"  routerLink='/paymenthistory' >
+          Payment history
+        </a>
+
+        <a class="list-group-item list-group-item-action"  routerLink='/preferneces' >
+          Preferences
+        </a> -->
+
+  </div>
+</div>

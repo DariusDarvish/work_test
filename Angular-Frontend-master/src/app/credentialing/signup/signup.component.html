@@ -1,0 +1,55 @@
+<div class="navbar" >
+  <a href="#home"><p><a style="color:#b30404;">AMAZON </a> <a style="color:#ff7b00;"> METRIX</a></p></a>
+  <a href="#news"></a>
+  <a class="
+      " data-widget="control-sidebar"  data-slide="true" href="#" style="left:80px">
+          <div class="dropdown dropleft">
+              <i id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+                class="fas fa-cog"></i> 
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                   
+                    <a class="dropdown-item" (click)="logout()"> logout </a>
+                    
+                  </div>
+          </div>
+      </a> 
+</div>
+
+
+<div class="flex-container">
+    <div class="flex-item">
+   
+      <div class="header-center">
+        <p><a style="color:#b30404;">AMAZON </a> <a style="color:#ff7b00;"> METRIX</a></p>
+      </div>
+   
+  
+   <form [formGroup]="signupForm" (ngSubmit)="signup()" >
+  
+    <label class="badge" style="align-items: left;">Username</label>
+    <input class="input1" matInput type="text" id="username" placeholder="" autocomplete="off" formControlName="username">
+    <div class="text-danger" *ngIf ="f.username.invalid && (f.username.dirty || f.username.touched)" style="font-size: small;">Username is already taken</div>
+    
+   
+    <label class="badge" style="align-items: left;">Password</label>
+    <input class="input1" matInput type="password" id="password" placeholder="" formControlName="password" required>
+    <div class="text-danger" *ngIf ="f.password.invalid && (f.password.dirty || f.password.touched)" style="font-size: small;">Password must be 8 Characters long</div>
+    
+    
+    <label class="badge" style="align-items: left;">Password2</label>
+    <input class="input1" matInput type="password" id="password2" placeholder="" [ngClass]="{'is-invalid':signupForm.get('password2').errors}" formControlName="password2" required>
+    <div class="invalid-feedback" *ngIf="signupForm.get('password2').hasError('passwordMismatch')" style="font-size: small;">
+      Passwords do not match.
+    </div>
+    
+    
+    <label class="badge" style="align-items: left;">email</label>
+    <input class="input1" matInput type="text" id="email" placeholder="" formControlName="email" required>
+    <div class="text-danger" *ngIf ="f.email.invalid && (f.email.dirty || f.email.touched)" style="font-size: small;">please enter another email address</div>
+   
+    <button class="btn btn-custom" mat-raised-button color="primary" type="submit" style='top:25px;' [disabled]="!signupForm.valid" >Signup</button>
+  </form>
+  </div>
+  
+  
+  </div>

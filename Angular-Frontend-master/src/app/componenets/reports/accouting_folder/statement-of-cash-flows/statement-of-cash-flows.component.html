@@ -1,0 +1,55 @@
+<html style="background-color:white;">
+<style>
+
+</style>
+
+<body style="background-color:white;">
+
+  <div class='header'>
+    <app-header></app-header>
+  </div>
+
+
+  <nav class="navbar">
+    <app-sidenav></app-sidenav>
+  </nav>
+
+
+
+
+  <div class="content-wrapper" style="background-color:white;">
+    <div *ngIf="menu==true">
+      <div class='search'>
+        <app-searchmenu></app-searchmenu>
+      </div>
+    </div>
+
+
+    <section class="content" style="background-color:white">
+      <div class="container-fluid">
+        <app-buttons></app-buttons>
+      </div>
+    </section>
+    <!-- ng if here to load new gird -->
+
+    <div class="content-wrapper2">
+      <div class="card-2">
+        <meta name="viewport" content="width=device-width, initial-scale=1.2">
+        <ag-grid-angular
+          [ngStyle]="{'width':'100%','box-shadow': '0 2px 4px 0 rgba(0, 0, 0, .5)','height': menu===true ?'100%':'115%'}"
+          class="ag-theme-alpine" [rowData]="rowData | async" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef"
+          [sideBar]="true" [gridOptions]='gridOptions' [aggFuncs]="aggFuncs" overlayLoadingTemplate
+          overlayNoRowsTemplate rowSelection="multiple" (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+</body>
+
+</html>

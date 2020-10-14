@@ -1,0 +1,68 @@
+<div class="navbar" style="">
+  <p><a style="color:#b30404;">AMAZON </a> <a style="color:#ff7b00;"> METRIX</a></p>
+  <a href="#news"></a>
+  <a class="
+      " data-widget="control-sidebar"  data-slide="true" href="#" style="left:80px">
+          <div class="dropdown dropleft">
+              <i id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+                class="fas fa-cog"></i> 
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                   
+                    <a class="dropdown-item" (click)="logout()"> logout </a>
+                  
+                  </div>
+          </div>
+      </a> 
+</div>
+
+
+
+
+
+<div class="flex-container">
+<div class="flex-item" style="left:500px;">
+   
+    <div class="header-center">
+      <p><a style="color:#b30404;">AMAZON </a> <a style="color:#ff7b00;"> METRIX</a></p>
+    </div>
+ 
+
+ <form [formGroup]="compsignupForm" (ngSubmit)="companysignup()">
+
+  <label class="badge" style="align-items: left;">Company name</label>
+  <input class="input1" matInput type="text" id="company" placeholder="" autocomplete="off" formControlName="company_name" required>
+  <div class="text-danger" *ngIf ="f.company_name.invalid && (f.company_name.dirty || f.company_name.touched)" style="font-size: small;">Company Name is already taken</div>
+
+  <label class="badge" style="align-items: left;">Profile name</label>
+  <input class="input1" matInput type="text" id="company" placeholder="" autocomplete="off" formControlName="profile_name" required>
+
+  <label class="badge" style="align-items: left;">Project name</label>
+  <input class="input1" matInput type="text" id="company" placeholder="" autocomplete="off" formControlName="project_name" required>
+
+  <!-- <label class="badge" style="align-items: left;">MWS authtoken</label>
+  <input class="input1" matInput type="text" id="company" placeholder="" autocomplete="off" formControlName="mws_authtoken" required>
+
+  <label class="badge" style="align-items: left;">Access key</label>
+  <input class="input1" matInput type="text" id="company" placeholder="" autocomplete="off" formControlName="access_key" required>
+
+  <label class="badge" style="align-items: left;">Merchant id</label>
+  <input class="input1" matInput type="text" id="company" placeholder="" autocomplete="off" formControlName="merchant_id" required>
+
+  <label class="badge" style="align-items: left;">Seceret Key</label>
+  <input class="input1" matInput type="text" id="company" placeholder="" autocomplete="off" formControlName="secret_key" required>
+
+  <label class="badge" style="align-items: left;">Marketplace id</label>
+  <input class="input1" matInput type="text" id="company" placeholder="" autocomplete="off" formControlName="marketplace_id" required>
+
+  <label class="badge" style="align-items: left;">Advertising token</label>
+  <input class="input1" matInput type="text" id="company" placeholder="" autocomplete="off" formControlName="advertising_token" required> -->
+ 
+  <div class=row></div>
+  <button class="btn btn-custom" mat-raised-button color="primary" type="submit" button type="submit" [disabled]="!compsignupForm.valid" >Signup</button>
+  
+</form>
+</div>
+</div>
+
+
+

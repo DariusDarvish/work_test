@@ -1,0 +1,37 @@
+<div class='header'>
+  <app-header></app-header>
+</div>
+
+
+<nav class="navbar">
+  <app-sidenav></app-sidenav>
+</nav>
+
+
+
+
+<div class="content-wrapper">
+  <div class='search'>
+    <app-searchmenu></app-searchmenu>
+  </div>
+
+  <section class="content" style="background-color:white">
+    <div class="container-fluid">
+      <app-buttons></app-buttons>
+    </div>
+  </section>
+
+  <div class="content-wrapper2">
+    <div class="card-2">
+      <meta name="viewport" content="width=device-width, initial-scale=1.2">
+      <ag-grid-angular style="width: 100%; height: 100%; " class="ag-theme-alpine" [rowData]="rowData | async"
+        [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [sideBar]="true" [gridOptions]='gridOptions'
+        [aggFuncs]="aggFuncs" rowSelection="multiple" [overlayLoadingTemplate]="overlayLoadingTemplate"
+        [overlayNoRowsTemplate]="overlayNoRowsTemplate" (gridReady)="onGridReady($event)">
+      </ag-grid-angular>
+
+    </div>
+
+  </div>
+
+</div>

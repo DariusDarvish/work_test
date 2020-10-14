@@ -1,0 +1,8 @@
+<div *ngIf="{ company:company_name} as variable">
+    <span>
+        Accept invation to join {{variable.company}}</span>
+        <form [formGroup]="addUserForm" (ngSubmit)="addUser()">
+            <button class="btn btn-custom" mat-raised-button color="primary" type="submit" style='top:70px;'>accept</button>
+        </form>
+   
+  </div>
